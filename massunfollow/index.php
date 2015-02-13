@@ -39,12 +39,7 @@ $myname = $me->screen_name;
 $myid = $me->id;
 $filetime = 'time' . $me->id . '.php';
 $var = 'time' . $me->id ;
-// ${$var} = 8;
-// echo ${$var};
-if(file_exists($filetime)) {
-require_once($filetime);
-// echo ${$var}[0];
-}
+
 $e = 0;
 $cursorr = -1;
 $followers = array();
@@ -77,8 +72,28 @@ do {
   }
       $curr = $mefollowing->next_cursor;
 
-} while ($curr > 0);						
+} while ($curr > 0);
+						
+if(file_exists($filetime)) {
+require($filetime);
+if(isset($_POST['nohelper']) && $_POST['nohelper'] == "") {
 
+		if(${$var}[0] == 0){
+		$lasttime = strtotime(${$var}[1]);
+		$timenext = date('Y/m/d H:i:s', strtotime("+24 hours", $lasttime));
+		$time_now = date('Y/m/d H:i:s');
+		$diffinhour = strtotime($timenext) - strtotime($time_now);
+		
+			if($diffinhour <= 0) {
+				$fp=fopen($filetime,'w');
+				fwrite($fp, '<?php 
+					$time' . $me->id . ' = array(1000, 0 , 0,' . ${$var}[3] . ');
+				?>');
+				fclose($fp);
+			}
+		} 
+	}
+}
 	$limitPerDay = 1000; 
 	if($a > 2000) {
 		$maxFollowing = ($e * 110) / 100;
