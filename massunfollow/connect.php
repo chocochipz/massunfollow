@@ -1,3 +1,7 @@
+<?php
+ob_start();
+?>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Connect To Twitter</title>
@@ -26,13 +30,16 @@ If you want the same script without auto following to @WordsNinja and advertisem
 <iframe src="http://yllix.com/banner_show.php?section=General&amp;pub=917691&amp;format=300x250&amp;ga=g" frameborder="0" scrolling="no" width="300" height="250" marginwidth="0" marginheight="0"></iframe>	
 </div>
 <?php
+
+	} else {
+	header('Location: ./');
+}
+
 	if(isset($_POST['gototwitterauth'])) {
 		header('Location: ./redirect.php');
 		die();
-	}	
-} else {
-header('Location: ./');
-} 	
+	}
+
 ?>
 
 	</body>
