@@ -1,0 +1,178 @@
+body {
+font-family: Arial Narrow;
+}
+
+h2{
+text-transform: uppercase;
+font-family: Arial;
+}
+
+label {
+cursor: pointer;
+}
+
+ul{
+padding: 0 0 0 15px;
+margin: 0;
+}
+
+#area {
+float:left;
+}
+
+#right {
+float: right;
+}
+
+#right, #area {
+width : 45%;
+padding: 15px;
+}
+
+#right > form {
+width: 50%;
+text-align: center;
+margin: 0 auto;
+}
+
+#donate {
+text-align: center;
+}
+
+#wrap {
+width: 90%;
+margin: 0 auto;
+}
+
+.clear{
+clear: both;
+}
+
+input[type="text"] {
+padding: 2.5px 5px;
+width: 100%;
+}
+
+input[type="submit"] {
+width: 100%;
+margin: 0 auto;
+font-weight: bold;
+cursor: pointer;
+}
+
+td{
+/* text-align: center; */
+}
+
+a {
+text-decoration: none;
+font-weight: bold;
+color: #556B2F;
+/* font-style: italic; */
+}
+
+#logoutform, #logoutbutton {
+display: inline-block;
+float: right;
+}
+
+#logoutbutton {
+  background: none repeat scroll 0 0 #000000;
+  border: medium none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.note {
+  border: 1px solid #000000;
+  font-family: Arial;
+  font-size: 12px;
+  padding: 10px;
+  text-align: justify;
+}
+
+.guide {
+  border: 1px solid #000000;
+  font-family: Arial;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+}
+
+.red {
+color: #990000;
+}
+
+.footer {
+padding: 15px;
+}
+
+.fleft {
+float: left;
+}
+
+.fright{
+float: right;
+}
+
+.fleft, .fright {
+display: inline-block;
+font-size: 14px;
+}
+
+#deactivatehelperlabel {
+font-weight: bold;
+font-style: italic;
+}
+
+input[type="checkbox"] {
+margin-top: 2px;
+}
+
+#connect {
+width: 300px;
+margin: 0 auto;
+}
+
+#connect > iframe {
+margin: 0 auto;
+
+}
+
+#connecttotwitter {
+display: none;
+}
+
+#wait {
+display: none;
+width: 100%;
+height: 100%;
+position: fixed;
+padding: 15px;
+text-align: center;
+background: #000000;
+color: #ffffff;
+/* 	-moz-opacity: 0.75;
+	opacity:.75;
+	filter: alpha(opacity=75);*/
+top:0; left:0; right:0; bottom:0; 
+margin: auto;
+}
+
+#wait > img {
+display: block;
+margin: 0 auto;
+}
+
+#wait > h3 {
+font-weight: bold;
+}
+
+#wait > a {
+color: #ffffff;
+}
