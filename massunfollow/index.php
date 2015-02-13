@@ -18,12 +18,6 @@ require_once('config.php');
 	<body>
 			<?php
 
-						
-/* 			if(preg_match("index", $_SERVER['REQUEST_URI'])) {
-			header("Location: http://" . $_SERVER['SERVER_NAME']);
-			} */
-			
-			// echo $_SERVER['REQUEST_URI'] . "<br/>";
 			if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) {
 				 header('Location: ./destroysessions.php');
 				
@@ -43,44 +37,7 @@ $var = 'time' . $me->id ;
 $myinfo = $twitapi->get('statuses/user_timeline', array('screen_name' => $myname, 'count' => 2));
 $e = $myinfo[0]->user->followers_count;
 $a = $myinfo[0]->user->friends_count;
-
-// var_dump($myinfo);
-
-/**/
-/* $e = 0;
-$cursorr = -1;
-$followers = array();
-do {	
-$myfollowers = $twitapi->get('followers/ids', array('screen_name' => $myname, 'count' => 2));
-$foll_array = $myfollowers->ids;
-
-  foreach ($foll_array as $key => $val) {
-
-        $full_followers[$e] = $val;
-        $e++; 
-  }	
-	
-	$cursorr = $myfollowers->next_cursor;
-	
-} while ($cursorr > 0);
-
-// Following
-$a = 0;
-$curr = -1;
-$following = array();
-do {
- $mefollowing = $twitapi->get('friends/ids', array('screen_name' => $myname));	
-  $follwingarray = $mefollowing->ids;
-
-  foreach ($follwingarray as $key => $val) {
-
-        $following[$a] = $val;
-        $a++;
-  }
-      $curr = $mefollowing->next_cursor;
-
-} while ($curr > 0); */
-/**/						
+					
 if(file_exists($filetime)) {
 require($filetime);
 if(isset($_POST['nohelper']) && $_POST['nohelper'] == "") {
@@ -256,16 +213,7 @@ header('Location: ./destroysessions.php');
 		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 		</form>
-<!--<p class="note">By using this tool, you are agree to automatically following <a href='http://twitter.com/WordsNinja'>@WordsNinja</a>! Please send follow back request via mention if you would like to be followed back by @WordsNinja!
-</p>
-<hr>
-<p class="note">
-If you want the same script without auto following to @WordsNinja, then you can get it for <b>$27</b> by message me through <a href="https://www.facebook.com/IndscriptSolution">this facebook page</a>!
-</p>
-<p class="guide">
-<span class="red">Click here to download the method I use with this tool to get 15.000+ twitter followers quickly and make money with them!</span><br/>
-</p>-->
-		
+	
 		</div>
 		<div class="clear"></div>
 </div>
