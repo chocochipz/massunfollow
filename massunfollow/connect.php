@@ -46,3 +46,6 @@ If you want the same script without auto following to @WordsNinja and advertisem
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script type="text/javascript" src="jqueryajax.js"></script>	
 </html>
+<?php
+ob_end_flush();
+?>
