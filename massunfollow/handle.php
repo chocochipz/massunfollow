@@ -35,23 +35,6 @@ do {
 if(file_exists($filetime)) {
 require($filetime);
 if(isset($_POST['nohelper']) && $_POST['nohelper'] == "") {
-	// $folllimit = 1000; 
-	if($a >= 2000) {
-		$folllimit = ($e * 110) / 100;
-	} else {
-		$folllimit = 2000;
-	}
-		if(${$var}[3] >= $folllimit) {
-		?>
-			<script>
-				jQuery(document).ready(function($){
-					alert("You have reach the maximum following request limit!");
-				});
-			</script>		
-		<?php
-			die();
-		}	
-	
 		if(${$var}[0] == 0){
 		$lasttime = strtotime(${$var}[1]);
 		$timenext = date('Y/m/d H:i:s', strtotime("+24 hours", $lasttime));
