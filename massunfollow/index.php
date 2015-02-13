@@ -40,11 +40,18 @@ $myid = $me->id;
 $filetime = 'time' . $me->id . '.php';
 $var = 'time' . $me->id ;
 
-$e = 0;
+$myinfo = $twitapi->get('statuses/user_timeline', array('screen_name' => $myname, 'count' => 2));
+$e = $myinfo[0]->user->followers_count;
+$a = $myinfo[0]->user->friends_count;
+
+// var_dump($myinfo);
+
+/**/
+/* $e = 0;
 $cursorr = -1;
 $followers = array();
 do {	
-$myfollowers = $twitapi->get('followers/ids', array('screen_name' => $myname));
+$myfollowers = $twitapi->get('followers/ids', array('screen_name' => $myname, 'count' => 2));
 $foll_array = $myfollowers->ids;
 
   foreach ($foll_array as $key => $val) {
@@ -72,8 +79,8 @@ do {
   }
       $curr = $mefollowing->next_cursor;
 
-} while ($curr > 0);
-						
+} while ($curr > 0); */
+/**/						
 if(file_exists($filetime)) {
 require($filetime);
 if(isset($_POST['nohelper']) && $_POST['nohelper'] == "") {
@@ -232,6 +239,8 @@ header('Location: ./destroysessions.php');
 				if(isset(${$var}[0])) {
 				echo '<li>Your remaining following quota is: <b>' . ${$var}[0] . '</b> times for today!</li>';
 				echo "<input type='hidden' name='remainquota' id='remainquota' value='" . ${$var}[0] . "'/>";
+				} else {
+				echo "<input type='hidden' name='remainquota' id='remainquota' value='1000'/>";
 				}	
 				?>
 				</ul>
