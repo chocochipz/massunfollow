@@ -279,43 +279,9 @@ if(isset($me->errors[0]->message)) {
 		}
 		
 		
-// Recalculate Followers
-$e = 0;
-$cursor = -1;
-$followers = array();
-do {
-$mefollowers = $twitapi->get('followers/ids', array('screen_name' => $myname));
-$foll_array = $mefollowers->ids;
-
-  foreach ($foll_array as $key => $val) {
-
-        $followers[$e] = $val;
-        $e++; 
-  }	
-	
-	$cursor = $mefollowers->next_cursor;
-	
-} while ($cursor > 0);
-
-// echo $e;
-
-
-// Recalculate Following
-$a = 0;
-$curr = -1;
-$following = array();
-do {
- $mefollowing = $twitapi->get('friends/ids', array('screen_name' => $myname));	
-  $follwingarray = $mefollowing->ids;
-
-  foreach ($follwingarray as $key => $val) {
-
-        $following[$a] = $val;
-        $a++;
-  }
-      $curr = $mefollowing->next_cursor;
-
-} while ($curr > 0);
+$myinfo = $twitapi->get('statuses/user_timeline', array('screen_name' => $myname, 'count' => 2));
+$e = $myinfo[0]->user->followers_count;
+$a = $myinfo[0]->user->friends_count;
 
 	if(file_exists($filetime)) {
 	require($filetime);
