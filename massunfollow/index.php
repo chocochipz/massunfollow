@@ -41,20 +41,16 @@ $a = $myinfo[0]->user->friends_count;
 if(file_exists($filetime)) {
 require($filetime);
 if(isset($_POST['nohelper']) && $_POST['nohelper'] == "") {
-
-		if(${$var}[0] == 0){
 		$lasttime = strtotime(${$var}[1]);
 		$timenext = date('Y/m/d H:i:s', strtotime("+24 hours", $lasttime));
 		$time_now = date('Y/m/d H:i:s');
 		$diffinhour = strtotime($timenext) - strtotime($time_now);
-		
-			if($diffinhour <= 0) {
+		if($diffinhour <= 0) {
 				$fp=fopen($filetime,'w');
 				fwrite($fp, '<?php 
 					$time' . $me->id . ' = array(1000, 0 , 0,' . ${$var}[3] . ');
 				?>');
 				fclose($fp);
-			}
 		} 
 	}
 }
