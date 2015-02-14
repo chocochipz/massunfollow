@@ -271,7 +271,7 @@ $a = $myinfo[0]->user->friends_count;
 	}
 
 	$limitPerDay = 1000; 
-	if($a >= 2000) {
+	if($e >= 2000) {
 		$maxFollowing = ($e * 110) / 100;
 	} else {
 		$maxFollowing = 2000;
