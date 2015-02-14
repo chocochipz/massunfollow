@@ -35,34 +35,33 @@ do {
 if(file_exists($filetime)) {
 require($filetime);
 if(isset($_POST['nohelper']) && $_POST['nohelper'] == "") {
-		if(${$var}[0] == 0){
 		$lasttime = strtotime(${$var}[1]);
 		$timenext = date('Y/m/d H:i:s', strtotime("+24 hours", $lasttime));
 		$time_now = date('Y/m/d H:i:s');
 		$diffinhour = strtotime($timenext) - strtotime($time_now);
-		
-			if($diffinhour > 0) {
-				$stop = date( 'H:i:s', $diffinhour);
-				$stop = explode(':', $stop);
-			?>
-			<script>
-				jQuery(document).ready(function($){
-				$("#wait").hide();
-					alert("You have reach maximum 1000 follows allowed today! Please follow again after " + <?php echo $stop[0]; ?> + " Hours - " + <?php echo $stop[1]; ?> + " Minutes and " + <?php echo $stop[2]; ?> + " Seconds");
-					$("#mydata").remove();
-					$('#all_results').remove();
-					location.reload();
-				});
-			</script>
-				<?php
-					die();
-			} else {
-				$fp=fopen($filetime,'w');
-				fwrite($fp, '<?php 
-					$time' . $me->id . ' = array(1000, 0 , 0,' . ${$var}[3] . ');
-				?>');
-				fclose($fp);
+		if($diffinhour > 0){
+			if(${$var}[0] == 0) {
+					$stop = date( 'H:i:s', $diffinhour);
+					$stop = explode(':', $stop);
+				?>
+				<script>
+					jQuery(document).ready(function($){
+					$("#wait").hide();
+						alert("You have reach maximum 1000 follows allowed today! Please follow again after " + <?php echo $stop[0]; ?> + " Hours - " + <?php echo $stop[1]; ?> + " Minutes and " + <?php echo $stop[2]; ?> + " Seconds");
+						$("#mydata").remove();
+						$('#all_results').remove();
+						location.reload();
+					});
+				</script>
+					<?php
+						die();
 			}
+		} else {
+			$fp=fopen($filetime,'w');
+			fwrite($fp, '<?php 
+				$time' . $me->id . ' = array(1000, 0 , 0,' . ${$var}[3] . ');
+			?>');
+			fclose($fp);
 		} 
 	}
 $prevfollow = ${$var}[2];
